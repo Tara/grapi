@@ -1,29 +1,15 @@
-'use strict';
-const koa = require('koa')
-//const koaRouter = require('koa-router')
+const Koa = require('koa');
+const indexRoutes = require('./routes/index');
+const bookRoutes = require('./routes/books');
 
-const app = new koa()
-const PORT = 1337
+const app = new Koa();
+const PORT = process.env.PORT || 1337;
 
-// const router = new koaRouter()
-
-// router.get('koala', '/', (ctx) => {
-//   ctx.body = "Hi there."
-// })
-
-// app.use(router.routes())
-//   .use(router.allowedMethods())
-
-
-app.use(async (ctx) => {
-  ctx.body = {
-    status: 'success',
-    message: 'hello, world!'
-  };
-});
+app.use(indexRoutes.routes());
+app.use(bookRoutes.routes());
 
 const server = app.listen(PORT, () => {
   console.log(`Server listening on port: ${PORT}`);
 });
 
-module.exports = server
+module.exports = server;
