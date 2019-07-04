@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "test": "node test.js"
+    "start": "node src/server/index.js",
+    "test": "./node_modules/mocha/bin/_mocha",
+    "dev": "nodemon index.js"
   },
   "keywords": [],
   "author": "Tara Teich",
@@ -14,10 +15,15 @@
     "node": "12.x"
   },
   "dependencies": {
+    "knex": "^0.18.2",
     "koa": "^2.7.0",
-    "koa-router": "^7.4.0"
+    "koa-router": "^7.4.0",
+    "pg": "^7.11.0"
   },
   "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "mocha": "^6.1.4",
     "nodemon": "^1.19.1"
   }
 }
