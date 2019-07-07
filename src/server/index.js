@@ -3,18 +3,15 @@ const indexRoutes = require('./routes/index');
 const bookRoutes = require('./routes/books');
 const authorRoutes = require('./routes/authors');
 
-const dotenv = require('dotenv');
-dotenv.config();
-
+const { port } = require('./config');
 const app = new Koa();
-const PORT = process.env.PORT || 1337;
 
 app.use(indexRoutes.routes());
 app.use(bookRoutes.routes());
 app.use(authorRoutes.routes());
 
-const server = app.listen(PORT, () => {
-  console.log(`Server listening on port: ${PORT}`);
+const server = app.listen(port, () => {
+  console.log(`Server listening on port: ${port}`);
 });
 
 module.exports = server;
