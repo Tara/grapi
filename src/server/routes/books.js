@@ -19,7 +19,8 @@ router.get(BASE_URL, async (ctx) => {
 router.get(`${BASE_URL}/:id`, async (ctx) => {
     try {
         const book = await queries.getSingleBook(ctx.params.id);
-        if (book.length) {
+
+        if (book.title) {
             ctx.body = {
                 status: 'success',
                 data: book
