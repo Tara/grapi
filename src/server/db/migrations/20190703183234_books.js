@@ -1,8 +1,7 @@
 exports.up = (knex, Promise) => {
     return knex.schema.createTable('books', (table) => {
-      table.increments();
+      table.increments('id').primary();
       table.string('title').notNullable().unique();
-      table.string('author').notNullable();
       table.string('genre').notNullable();
       table.integer('goodreads_id').notNullable();
     });
