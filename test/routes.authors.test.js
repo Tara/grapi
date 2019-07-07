@@ -62,7 +62,7 @@ describe('routes : authors', () => {
                     res.body.status.should.eql('success');
                     // the JSON response body should have a
                     // key-value pair of {"data": 1 movie object}
-                    res.body.data[0].should.include.keys(
+                    res.body.data.should.include.keys(
                         'id', 'name'
                     );
                     done();

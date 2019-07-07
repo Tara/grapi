@@ -19,7 +19,7 @@ router.get(BASE_URL, async (ctx) => {
 router.get(`${BASE_URL}/:id`, async (ctx) => {
     try {
         const author = await queries.getSingleAuthor(ctx.params.id);
-        if (author.length) {
+        if (author.name) {
             ctx.body = {
                 status: 'success',
                 data: author
