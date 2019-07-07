@@ -3,6 +3,9 @@ const indexRoutes = require('./routes/index');
 const bookRoutes = require('./routes/books');
 const authorRoutes = require('./routes/authors');
 
+const dotenv = require('dotenv');
+dotenv.config();
+
 const app = new Koa();
 const PORT = process.env.PORT || 1337;
 
