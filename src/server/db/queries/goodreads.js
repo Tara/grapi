@@ -7,13 +7,22 @@ const myCredentials = {
     secret: goodreads_api_secret
 };
   
-const goodreads = Goodreads(myCredentials);
+const goodreads = Goodreads(myCredentials, '/goodreads_oauth_callback');
+goodreads.initOAuth('/goodreads_oauth_callback');
 
 function getUserBooks(user) {
-    //return goodreads.getBooksOnUserShelf({id: user, shelf:"read"});
-    return goodreads.getBooksByAuthor('175417')
+    return goodreads.getBooksOnUserShelf({id: user, shelf:"read"});
+    //return goodreads.getBooksByAuthor('175417')
+}
+
+function oauthGoodreads() {
+    return goodreads.getRequestToken()
+    .then(() => {
+        return goodreads.getAccessToken()
+    });
 }
 
 module.exports = {
-    getUserBooks
+    getUserBooks,
+    oauthGoodreads
 }

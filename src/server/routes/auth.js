@@ -2,6 +2,7 @@ const Router = require('koa-router');
 const passport = require('koa-passport');
 const fs = require('fs');
 const queries = require('../db/queries/users');
+const grQueries = require('../db/queries/goodreads');
 
 const router = new Router();
 
@@ -42,9 +43,12 @@ router.get('/auth/login', async (ctx) => {
 });
 
 router.post('/auth/login', async (ctx) => {
-  return passport.authenticate('local', (err, user, info, status) => {
+  return passport.authenticate('local', 
+  async (err, user, info, status) => {
     if (user) {
       ctx.login(user);
+      let r = await grQueries.oauthGoodreads();
+      console.log(r);
       ctx.redirect('/auth/status');
     } else {
       ctx.status = 400;
@@ -61,6 +65,10 @@ router.get('/auth/logout', async (ctx) => {
     ctx.body = { success: false };
     ctx.throw(401);
   }
+});
+
+router.post('/goodreads_oauth_callback', async (ctx) => {
+  console.log("callback: " + ctx.request)
 });
 
 module.exports = router;
