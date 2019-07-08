@@ -9,6 +9,7 @@ const indexRoutes = require('./routes/index');
 const bookRoutes = require('./routes/books');
 const authorRoutes = require('./routes/authors');
 const authRoutes = require('./routes/auth');
+const userRoutes = require('./routes/users');
 
 const app = new Koa();
 
@@ -29,6 +30,7 @@ app.use(indexRoutes.routes());
 app.use(bookRoutes.routes());
 app.use(authorRoutes.routes());
 app.use(authRoutes.routes());
+app.use(userRoutes.routes());
 
 const server = app.listen(port, () => {
   console.log(`Server listening on port: ${port}`);
