@@ -17,9 +17,6 @@ function getUserBooks(user) {
 
 function oauthGoodreads() {
     return goodreads.getRequestToken()
-    .then(() => {
-        return goodreads.getAccessToken()
-    });
 }
 
 module.exports = {

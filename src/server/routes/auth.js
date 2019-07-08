@@ -49,7 +49,8 @@ router.post('/auth/login', async (ctx) => {
       ctx.login(user);
       let r = await grQueries.oauthGoodreads();
       console.log(r);
-      ctx.redirect('/auth/status');
+      ctx.redirect(r);
+//      ctx.redirect('/auth/status');
     } else {
       ctx.status = 400;
       ctx.body = { status: 'error' };
