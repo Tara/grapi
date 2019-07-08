@@ -17,6 +17,7 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "dotenv": "^8.0.0",
+    "goodreads-api-node": "0.0.10",
     "knex": "^0.18.2",
     "koa": "^2.7.0",
     "koa-bodyparser": "^4.2.1",
