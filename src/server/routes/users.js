@@ -26,7 +26,7 @@ router.get('/user/books', async (ctx) => {
   }
 });
 
-router.post('/user/update', async (ctx) => {  
+router.get('/user/update', async (ctx) => {  
   if (ctx.isAuthenticated()) {
     const user = await queries.updateUserGoodreads(ctx.state.user.id, ctx.request.body.goodreads_id);
 

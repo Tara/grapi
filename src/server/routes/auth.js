@@ -78,6 +78,8 @@ router.get('/goodreads_oauth_callback', async (ctx) => {
 
   console.log(parsedUrl.query);
 
+  await gr.getAccessToken()
+
   ctx.body = {
     status: 'success',
     data: parsedUrl.query
