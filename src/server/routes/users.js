@@ -20,6 +20,10 @@ router.get('/user/books', async (ctx) => {
     console.log(data);
     if (data) {
       console.log(data.books.book[0])
+      ctx.body = {
+        status: 'success',
+        data: data
+      };      
     }
   } else {
     ctx.redirect('/auth/login');

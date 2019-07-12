@@ -1,4 +1,5 @@
 const Goodreads = require('goodreads-api-node');
+const userQueries = require('./users');
 
 const { goodreads_api_key, goodreads_api_secret } = require('../../config');
 
@@ -9,8 +10,13 @@ const myCredentials = {
   
 const goodreads = Goodreads(myCredentials);
 
-function getUserBooks(user) {
-    return goodreads.getBooksOnUserShelf({id: user, shelf:"read"});
+async function getUserBooks(user) {
+    const { goodreads_id } = await userQueries.getGoodreadsID(user)
+    
+    return goodreads.getBooksOnUserShelf(goodreads_id, "read", {per_page: 200, sort: 'author'})
+    .catch ((err) => {
+        console.log(err);
+    });
     //return goodreads.getBooksByAuthor('175417')
 }
 
@@ -22,7 +28,12 @@ async function oauthGoodreads(ctx) {
     return goodreads.getRequestToken()
 }
 
+async function getGoodreadsAccessToken(ctx) {
+    return goodreads.getAccessToken()
+}
+
 module.exports = {
     getUserBooks,
-    oauthGoodreads
+    oauthGoodreads,
+    getGoodreadsAccessToken
 }

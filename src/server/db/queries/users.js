@@ -20,7 +20,15 @@ function updateUserGoodreads(user, goodreads_id) {
     .returning('*');
 }
 
+function getGoodreadsID(user) {
+    return knex('users')
+    .select('goodreads_id')
+    .where({ id: parseInt(user) })
+    .first();
+}
+
 module.exports = {
     addUser,
-    updateUserGoodreads
+    updateUserGoodreads,
+    getGoodreadsID
 };
