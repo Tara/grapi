@@ -18,7 +18,7 @@
     "bcryptjs": "^2.4.3",
     "dotenv": "^8.0.0",
     "goodreads-api-node": "0.0.10",
-    "knex": "^0.18.2",
+    "knex": "^0.20.1",
     "koa": "^2.7.0",
     "koa-bodyparser": "^4.2.1",
     "koa-passport": "^4.1.3",
